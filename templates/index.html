@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">  
+<head>
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>PDF Question Generator</title> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Upload PDF and Generate Questions</h1>  
+
+    <form method="post" enctype="multipart/form-data">  <!-- Formiranje podataka koja će biti poslana putem POST metode -->
+        <label for="pdf_file">Choose PDF file:</label>  <!-- Oznaka za unos PDF datoteke -->
+        <input type="file" name="pdf_file" required>  <!-- Unos za izbor PDF datoteke, obavezno polje -->
+        
+        <label for="language">Select Language:</label>  <!-- Oznaka za izbor jezika -->
+        <select name="language">  <!-- Padajući meni za izbor jezika -->
+            <option value="en">English</option>  <!-- Opcija za engleski jezik -->
+            <option value="ba">Bosanski</option>  <!-- Opcija za bosanski jezik -->
+        </select>
+        
+        <input type="submit" value="Generate Questions">  <!-- Dugme za slanje forme -->
+    </form>
+</body>
+</html>

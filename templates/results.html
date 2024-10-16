@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">  
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Generated Questions</title> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Generated Questions</h1> 
+
+    <ul>  <!-- Lista koja sadrži generisane pitanja -->
+        {% for question in questions %}  <!-- Petlja koja prolazi kroz sve generisane pitanja -->
+            <li>{{ question }}</li>  <!-- Svako pitanje se prikazuje kao stavka liste -->
+        {% endfor %}
+    </ul>
+    
+    <a href="/">Back</a>  <!-- Link za povratak na početnu stranicu -->
+</body>
+</html>

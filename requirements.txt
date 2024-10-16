@@ -1,0 +1,8 @@
+Flask
+PyPDF2
+spacy
+transformers
+requests
+torch
+datasets
+pandas
