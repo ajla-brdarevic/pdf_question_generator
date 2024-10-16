@@ -11,7 +11,7 @@ def generate_questions(text):
         text,  # Ulazni tekst iz kojeg se generišu pitanja
         max_length=50,  # Maksimalna dužina generisanih pitanja
         num_beams=5,  # Broj "beam search" pretraga za generisanje boljih pitanja
-        num_return_sequences=2  # Broj generisanih pitanja koja će se vratiti
+        num_return_sequences=5  # Broj generisanih pitanja koja će se vratiti
     )
     
     # Vraća listu generisanih pitanja iz rezultata
