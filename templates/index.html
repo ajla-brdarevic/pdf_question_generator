@@ -1,25 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">  
+<html lang="en">
 <head>
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>PDF Question Generator</title> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Question Generator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-    <h1>Upload PDF and Generate Questions</h1>  
 
-    <form method="post" enctype="multipart/form-data">  <!-- Formiranje podataka koja će biti poslana putem POST metode -->
-        <label for="pdf_file">Choose PDF file:</label>  <!-- Oznaka za unos PDF datoteke -->
-        <input type="file" name="pdf_file" required>  <!-- Unos za izbor PDF datoteke, obavezno polje -->
-        
-        <label for="language">Select Language:</label>  <!-- Oznaka za izbor jezika -->
-        <select name="language">  <!-- Padajući meni za izbor jezika -->
-            <option value="en">English</option>  <!-- Opcija za engleski jezik -->
-            <option value="ba">Bosanski</option>  <!-- Opcija za bosanski jezik -->
+<body>
+    <h1>Upload PDF and Generate Questions</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        <!-- Formiranje podataka koja će biti poslana putem POST metode -->
+        <label for="input_type">Select Input Type:</label>
+        <select id="input_type" name="input_type" onchange="toggleInput()">
+            <option value="pdf">PDF</option>
+            <option value="text">Text</option>
         </select>
-        
-        <input type="submit" value="Generate Questions">  <!-- Dugme za slanje forme -->
+
+        <div id="pdf_input">
+            <label for="pdf_file">Choose PDF file:</label> <!-- Oznaka za unos PDF datoteke -->
+            <input type="file" name="pdf_file" required> <!-- Unos za izbor PDF datoteke, obavezno polje -->
+        </div>
+
+         <!-- Textbox koji se prikazuje kada je odabrana opcija Text -->
+         <div id="text_input" style="display: none;">
+            <label for="text">Paste your text here:</label>
+            <textarea name="text" rows="10" cols="50"></textarea>
+        </div>
+
+        <label for="language">Select Language:</label> <!-- Oznaka za izbor jezika -->
+        <select name="language"> <!-- Padajući meni za izbor jezika -->
+            <option value="en">English</option> <!-- Opcija za engleski jezik -->
+            <option value="ba">Bosanski</option> <!-- Opcija za bosanski jezik -->
+        </select>
+
+        <input type="submit" value="Generate Questions"> <!-- Dugme za slanje forme -->
     </form>
+
+    <script>
+        function toggleInput() {
+            const pdfInput = document.getElementById("pdf_input");
+            const textInput = document.getElementById("text_input");
+            const inputType = document.getElementById("input_type").value;
+            const pdfFileInput = document.querySelector('input[name="pdf_file"]');
+
+            if (inputType === "pdf") {
+                pdfInput.style.display = "block";
+                textInput.style.display = "none";
+                pdfFileInput.setAttribute('required', 'required'); // Postavi required kada je PDF odabran
+            } else {
+                pdfInput.style.display = "none";
+                textInput.style.display = "block";
+                pdfFileInput.removeAttribute('required'); // Ukloni required kada je odabran tekst
+            }
+        }
+    </script>
 </body>
+
 </html>

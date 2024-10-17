@@ -18,18 +18,40 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # Podešava maksimalnu veli
 @app.route('/', methods=['GET', 'POST'])  # Ova ruta može primati GET i POST zahtjeve
 def index():
     if request.method == 'POST':  # Provjerava da li je zahtev POST (slanje podataka)
-        file = request.files['pdf_file']  # Uzimanje PDF datoteke iz zahtjeva
-        language = request.form['language']  # Uzimanje jezika iz formi 
-        text = extract_text_from_pdf(file)  # Ekstrakcija teksta iz PDF datoteke
+        
+        input_type = request.form['input_type']  # Prepoznaj koji unos je odabran (PDF ili tekst)
+
+        language = request.form['language']
+
+        if input_type == 'pdf':
+            file = request.files['pdf_file']
+            text = extract_text_from_pdf(file)
+        elif input_type == 'text':
+            text = request.form.get('text', '').strip()  # Uzimanje teksta iz forme i brisanje viška praznih prostora
+            if not text:
+                return "No text provided"  # Prikaži poruku ako je tekst prazan
+        
+        # Procesiraj tekst sa spaCy
+        doc = nlp(text)
+        processed_text = " ".join([token.text for token in doc])
+
+        # Generiši pitanja
+        questions = generate_questions(processed_text)
+        return render_template('results.html', questions=questions)
+
+    return render_template('index.html')
+        #file = request.files['pdf_file']  # Uzimanje PDF datoteke iz zahtjeva
+        #language = request.form['language']  # Uzimanje jezika iz formi 
+        #text = extract_text_from_pdf(file)  # Ekstrakcija teksta iz PDF datoteke
 
         # Procesiranje teksta sa spaCy
-        doc = nlp(text)  # Analiza ekstrakovanog teksta pomoću spaCy modela
-        processed_text = " ".join([token.text for token in doc])  # Pretvara obrađeni tekst u string, uzimajući tekst svakog tokena
+       # doc = nlp(text)  # Analiza ekstrakovanog teksta pomoću spaCy modela
+        #processed_text = " ".join([token.text for token in doc])  # Pretvara obrađeni tekst u string, uzimajući tekst svakog tokena
 
-        questions = generate_questions(processed_text)  # Generisanje pitanja iz obrađenog teksta
-        return render_template('results.html', questions=questions)  # Vraća rezultat u 'results.html' šablon sa generisanim pitanjima
+        #questions = generate_questions(processed_text)  # Generisanje pitanja iz obrađenog teksta
+        #return render_template('results.html', questions=questions)  # Vraća rezultat u 'results.html' šablon sa generisanim pitanjima
     
-    return render_template('index.html')  # Vraća 'index.html' šablon za GET zahtev
+   # return render_template('index.html')  # Vraća 'index.html' šablon za GET zahtev
 
 # Pokretanje Flask aplikacije
 if __name__ == '__main__':
