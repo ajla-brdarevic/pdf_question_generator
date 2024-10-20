@@ -40,19 +40,7 @@ def index():
         return render_template('results.html', questions=questions)
 
     return render_template('index.html')
-        #file = request.files['pdf_file']  # Uzimanje PDF datoteke iz zahtjeva
-        #language = request.form['language']  # Uzimanje jezika iz formi 
-        #text = extract_text_from_pdf(file)  # Ekstrakcija teksta iz PDF datoteke
-
-        # Procesiranje teksta sa spaCy
-       # doc = nlp(text)  # Analiza ekstrakovanog teksta pomoću spaCy modela
-        #processed_text = " ".join([token.text for token in doc])  # Pretvara obrađeni tekst u string, uzimajući tekst svakog tokena
-
-        #questions = generate_questions(processed_text)  # Generisanje pitanja iz obrađenog teksta
-        #return render_template('results.html', questions=questions)  # Vraća rezultat u 'results.html' šablon sa generisanim pitanjima
-    
-   # return render_template('index.html')  # Vraća 'index.html' šablon za GET zahtev
-
+        
 # Pokretanje Flask aplikacije
 if __name__ == '__main__':
     app.run(debug=True)  # Pokreće aplikaciju u režimu za debagovanje, omogućavajući automatsko osvježavanje kod promena
