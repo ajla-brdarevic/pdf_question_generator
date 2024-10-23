@@ -20,16 +20,21 @@ The PDF Question Generator is a web application that allows users to upload PDF 
    ```bash
    git clone <repository-url>
 2. Navigate to the project directory:
-  cd <project-directory>
+   ```bash
+   cd <project-directory>
 
-3. Install the required dependencies:
+4. Install the required dependencies:
+   ```bash
    pip install -r requirements.txt
 
 ## Usage 
 1. Run the application:
-  python app.py
+   ```bash
+   python app.py
 
-3. Open your web browser and go to http://127.0.0.1:5000.
+3. Open your web browser and go to:
+   ```bash
+   http://127.0.0.1:5000.
 
 
 # Generator Pitanja iz PDF-a
@@ -55,14 +60,19 @@ Generator pitanja iz PDF-a je web aplikacija koja omogućava korisnicima da otpr
    git clone <repository-url>
 
 2. Idi u direktoriji projekta:
-  cd <project-directory>
+   ```bash
+   cd <project-directory>
 
-3. Instaliraj potrebne zavisnosti:
+4. Instaliraj potrebne zavisnosti:
+   ```bash
    pip install -r requirements.txt
 
 ## Korištenje 
 1. Pokreni aplikaciju:
-  python app.py
+   ```bash
+   python app.py
 
-3. Otvori web pretraživač i idi na http://127.0.0.1:5000.
+3. Otvori web pretraživač i idi na:
+```bash
+   http://127.0.0.1:5000.
  
