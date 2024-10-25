@@ -2,39 +2,61 @@
 __pycache__/
 *.py[cod]
 
-# Flask instance folder
-instance/
-
-# Flask cache
-*.db
-*.sqlite3
-
-# Environment variables
-.env
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+.env/
 
 # Jupyter Notebook
 .ipynb_checkpoints
 
-# VS Code settings
+# Pytest
+.cache
+*.cover
+*.log
+*.pot
+*.pyc
+*.pyo
+
+# IDE i editor specifične datoteke
 .vscode/
-
-# PyCharm settings
 .idea/
+*.swp
+*.swo
 
-# macOS files
+# OS specifične datoteke
 .DS_Store
-
-# Windows files
 Thumbs.db
-ehthumbs.db
 
-# Node.js dependencies
-node_modules/
-
-# Ignore all log files
+# Log datoteke
 *.log
 
-# Ignore the virtual environment
-venv/
-env/
-ENV/
+# Datoteke sa podacima
+data/
+*.csv
+*.json
+*.xlsx
+
+# Modeli i trenirani podaci
+model/
+checkpoints/
+*.h5
+*.pt
+*.ckpt
+*.pkl  # Ako koristite pickle za čuvanje modela
+
+# Konfiguracione datoteke
+config.yaml
+config.json
+
+# Rezultati treniranja
+results/
+output/
+
+fine_tuned_model/model.safetensors
+results/checkpoint-30/model.safetensors
+results/checkpoint-30/optimizer.pt
+results/checkpoint-30/scheduler.pt
+results/checkpoint-30/training_args.bin
