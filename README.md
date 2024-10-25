@@ -14,6 +14,7 @@ The PDF Question Generator is a web application that allows users to upload PDF 
 - spaCy
 - PyPDF2
 - Transformers
+- pandas
 
 ## Installation
 1. Clone the repository:
@@ -53,6 +54,7 @@ Generator pitanja iz PDF-a je web aplikacija koja omogućava korisnicima da otpr
 - spaCy
 - PyPDF2
 - Transformers
+- pandas
 
 ## Instalacija
 1. Kloniraj repozitorij:
